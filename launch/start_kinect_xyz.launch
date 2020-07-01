@@ -1,0 +1,8 @@
+<launch>
+
+    <env name="ROS_MASTER_URI" value="http://10.100.66.13:11311" />
+
+    <include file="$(find freenect_launch)/launch/examples/freenect-xyz.launch" >
+    </include>
+
+</launch>

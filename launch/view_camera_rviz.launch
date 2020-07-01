@@ -1,0 +1,12 @@
+<launch>
+
+    <env name="ROS_MASTER_URI" value="http://10.100.66.48:11311" />
+    <env name="ROS_HOSTNAME" value="robotlab-t1600" />
+
+    <node name="rviz" 
+        pkg="rviz" 
+        type="rviz" 
+        args="-d $(find ttu_camera)/ttu_camera.rviz">
+    </node>
+
+</launch>

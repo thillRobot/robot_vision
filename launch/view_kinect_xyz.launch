@@ -1,0 +1,15 @@
+<launch>
+
+    <env name="ROS_MASTER_URI" value="http://10.100.66.13:11311" />
+    <env name="ROS_HOSTNAME" value="robotlab-t1600" />
+
+    <node pkg="tf" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 0 0 0 1 map camera_depth_optical_frame 100"/>
+
+    <node name="rviz" 
+        pkg="rviz" 
+        type="rviz" 
+        args="-d $(find ttu_camera)/ttu_kinect.rviz">
+    </node>	
+
+	
+</launch>

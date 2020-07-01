@@ -1,0 +1,11 @@
+<launch>
+
+   <!-- <env name="ROS_MASTER_URI" value="http://10.100.66.13:11311" /> -->
+
+   <!-- <env name="LD_LIBRARY_PATH" value="/opt/ros/indigo/lib/x86_64-linux-gnu" /> -->	
+
+    <include file="$(find rtabmap_ros)/launch/rtabmap.launch" >
+      <arg name="rtabmap_args" value="--delete_db_on_start"/>
+    </include>
+
+</launch>

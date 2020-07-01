@@ -1,0 +1,9 @@
+<launch>
+
+   <!-- <env name="ROS_MASTER_URI" value="http://10.100.66.13:11311" /> -->
+
+    <include file="$(find rtabmap_ros)/launch/rtabmap.launch" >
+      <arg name="rtabmap_args" value="--delete_db_on_start"/>
+    </include>
+
+</launch>

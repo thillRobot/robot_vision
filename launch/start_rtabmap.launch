@@ -1,0 +1,26 @@
+<launch>
+
+  <!-- THESE ARE NOW SET IN ~/.bashrc (09/06/2017) TWH --> 	
+  <!-- <env name="ROS_MASTER_URI" value="http://10.100.66.70:11311" /> -->
+  <!-- <env name="ROS_HOSTNAME" value="robotlab-t1600" /> -->	
+  <!-- <env name="ROS_IP" value="149.149.151.59" /> -->
+
+  <include file="$(find rtabmap_ros)/launch/rtabmap.launch" >
+    <arg name="rgb_topic" value="/camera/data_throttled_image"/>
+    <arg name="depth_topic" value="/camera/data_throttled_image_depth"/>
+    <arg name="camera_info_topic" value="/camera/data_throttled_camera_info"/>
+    <arg name="compressed" value="true"/>
+    <arg name="rtabmap_args" value="--delete_db_on_start"/>
+    <arg name="visual_odometry" value="false"/>
+    <arg name="odom_topic" value="/RosAria/pose"/>	
+  </include>
+
+ <node 
+    pkg="teleop_twist_keyboard" 
+    name="teleop_twist_keyboard" 
+    type="teleop_twist_keyboard.py" 
+ />
+
+
+</launch>
+

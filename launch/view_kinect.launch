@@ -1,0 +1,17 @@
+<launch>
+
+    <param name="param" value="$(arg uri)"/>
+    <param name="param" value="$(arg host)"/>
+
+    <env name="ROS_MASTER_URI" value="http://$(arg uri):11311" />
+    <env name="ROS_HOSTNAME" value="$(arg host)" />
+
+    <node name="image_view" 
+          pkg="image_view" 
+          type="image_view" 
+          respawn="false" 
+          output="screen" >
+	  <remap from="image" to="/camera/depth/image" />  			
+    </node>
+	
+</launch>

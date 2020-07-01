@@ -1,0 +1,11 @@
+<launch>
+
+   <!-- <env name="ROS_MASTER_URI" value="http://10.100.66.13:11311" /> -->
+
+   <!-- <env name="LD_LIBRARY_PATH" value="/opt/ros/indigo/lib/x86_64-linux-gnu" /> -->	
+
+    <include file="$(find freenect_launch)/launch/freenect.launch" >
+      <arg name="depth_registration" value="true"/>
+    </include>
+
+</launch>
