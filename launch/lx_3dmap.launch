@@ -2,7 +2,7 @@
 
   <!-- <env name="ROS_IP" value="10.100.66.99"/> -->
   <param name="param" value="$(arg map)"/>
-  <env name="ROS_IP" value="10.124.66.14"/>
+  <env name="ROS_IP" value="10.104.66.14"/>
 
   <include file="$(find freenect_launch)/launch/freenect.launch">
      <arg name="depth_registration" value="True" />
@@ -47,7 +47,7 @@
 
   <!-- FRAME DEFINITIONS -->
   <node
-    pkg="lx_setup_tf"
+    pkg="lx_navigation"
     name="tf_broadcaster"
     type="tf_broadcaster"
   />
