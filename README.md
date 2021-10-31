@@ -81,7 +81,7 @@ I tried to compile the workspace with just `zed-ros-wrapper` and the following e
 ```
 Could not find the required component `zed_interfaces`. The following ...
 ```
-After some digging around this led me to try with `zed-ros-wrapper` and `zed-ros-interfaces` in src and it compiled without errors. It makes sense to include the `zed-ros-examples` package also. Cloning the examples package took a long time, but the wifi at my desk is terrible. Too bad my old DS100 died....that makes me think... its time to get that new router switch....
+After reading the docs I tried again with `zed-ros-wrapper` and `zed-ros-interfaces` in src and it compiled without errors. It makes sense to include the `zed-ros-examples` package also. 
 
 ```
 cd catkin_ws/src
@@ -91,6 +91,10 @@ git clone https://github.com/stereolabs/zed-ros-examples.git
 cd ..
 catkin_make
 ```
+
+
+
+
 
 ## old stuff below here 
 
