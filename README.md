@@ -62,11 +62,13 @@ This involves downloading the Jetpack 4.6 (Ubuntu 18.04ish) operating system ima
 
 #### Step 2 - Upgrade Jetson Nano to Ubuntu 20.04 (jetpack version remains 4.6)
 We need to updgrade tp 20.04 because the robot is runnning ROS Noetic. I do not want to downgrade the robot. Do not downgrade the robot!
-NVIDIA has not provided an image for 20.04 and will not provide support (see (here)[https://forums.developer.nvidia.com/t/ubuntu-20-04-on-nano/125451]). Hopefully this will change. There are several images available like the one in that thread above, however these might not be stable and there is no telling what is in there.  (this is also true about the NVIDIA image of course but...)
+NVIDIA has not provided an image for 20.04 and will not provide support (see [here](https://forums.developer.nvidia.com/t/ubuntu-20-04-on-nano/125451)). Hopefully this will change. There are several images available like the one in that thread above, however these might not be stable and there is no telling what is in there.  (this is also true about the NVIDIA image of course but...)
 
 I followed this [guide](https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html) from QEngineering to use `do-release-upgrade` to upgrade 18.04 to 20.04. Apparantly the Jetpack version is still 4.6, so I do not know what that means. There are some signs on the internet that say this upgrade is a bad idea. For now this is just for testing, lets proceed with caution. Note that Chromium browser and some other packges may need to be removed and not re-installed. There is an alternative [guide](https://stackdata.com/upgrade-nvidia-jetson-nano-from-ubuntu-bionic-beaver-to-focal-fossa/) on stackdata that is similar. In this guide openCV is removed also, but I wanted to avoid this if possible.   
 
+#### Step 3 - Install ROS 
 
+The robot runs on ROS Noetic. Install ROS Noetic using the official instruction [here](http://wiki.ros.org/noetic/Installation/Ubuntu). For now `ros-noetic-desktop-full` will be used because space is not a limitation (I have 32Gb and 64Gb SDs cards).
 
 
 
