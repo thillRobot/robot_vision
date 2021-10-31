@@ -103,6 +103,9 @@ Turn on RVIZ to see the data. The Jetson nano did not crash, but it did slow dow
 
 <img src="images/zed_ros_%20wrapper_rviz.png" alt="drawing" width="800"/>
 
+Cool, it works! Great job team.
+
+
 
 
 ## old stuff below here 
