@@ -44,6 +44,23 @@ Kinect V1 + i5 thinkpad ubuntu 20.04  = currently working in 20.04 (it works sup
 
 Follow this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) and it works great. 
 
+### Enabling the ZED stereo camera 
+
+ZED stereo (v1 I guess) on the Jetson Nano 4GB BO1 (2019) (model:P3450)
+
+This approach is desired because the jetson is so low power and the M73 i5 is not. The robot has a huge battery, so this is not the biggest deal. The M73 has outdated embedded intel graphics, so the Jetsons Maxwell GPU should do much better with the camera stream.
+
+If this works, it should port over to the TX2 NX if the nano has resource issues. It is below the reccomended specs from stereo labs, but we are going to try anyway. I have a feeling that it will work because I do not even want to display the video there or perform complex analyis...time to test
+
+Here is what I have done. 
+
+#### Step 1 - Setup Jetson Nano
+Follow the getting started turtorial from Nvidia [here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit).
+This involves downloading the operating system image from [here](https://developer.nvidia.com/jetson-nano-sd-card-image) and flashing it with the program of your choice. I have used pi-imager and balena-etcher, but I want to try `dd`. I tried once, but it did not work and now I now why. It is time to try again with `dd` 
+
+
+
+
 
 
 
