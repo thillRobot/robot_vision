@@ -67,9 +67,11 @@ NVIDIA has not provided an image for 20.04 and will not provide support (see [he
 I followed this [guide](https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html) from QEngineering to use `do-release-upgrade` to upgrade 18.04 to 20.04. Apparantly the Jetpack version is still 4.6, so I do not know what that means. There are some signs on the internet that say this upgrade is a bad idea. For now this is just for testing, lets proceed with caution. Note that Chromium browser and some other packges may need to be removed and not re-installed. There is an alternative [guide](https://stackdata.com/upgrade-nvidia-jetson-nano-from-ubuntu-bionic-beaver-to-focal-fossa/) on stackdata that is similar. In this guide openCV is removed also, but I wanted to avoid this if possible.   
 
 #### Step 3 - Install ROS 
+The robot runs on ROS Noetic. Install ROS Noetic using the official instruction [here](http://wiki.ros.org/noetic/Installation/Ubuntu). For now `ros-noetic-desktop-full` will be used because space is not a limitation (I have 32Gb and 64Gb SDs cards). At first I ran into a key during the `apt update` line before the install. I started over at step 1.2 and then it worked fine. I may have skipped a step the first time. Don't be like me.
 
-The robot runs on ROS Noetic. Install ROS Noetic using the official instruction [here](http://wiki.ros.org/noetic/Installation/Ubuntu). For now `ros-noetic-desktop-full` will be used because space is not a limitation (I have 32Gb and 64Gb SDs cards).
-
+#### Step 4 - Install ZED SDK
+[Download](https://www.stereolabs.com/developers/release/) and Install the software development kit from stereo labs following the getting started [guide](https://www.stereolabs.com/docs/getting-started/) . I think we have the ZED 1, but the SDK should work for all the cameras (check on this, dont beleive me). 
+This installation will not work in the wrong OS so make sure to download the correct installer. For now we are using ZED SDK for Jetpack 4.6.
 
 
 ## old stuff below here 
