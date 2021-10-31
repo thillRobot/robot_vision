@@ -46,7 +46,7 @@ Follow this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-visi
 
 ### Enabling the ZED stereo camera 
 
-ZED stereo (v1 I guess) on the Jetson Nano 4GB BO1 (2019) (model:P3450)
+ZED stereo (v1) on the Jetson Nano 4GB BO1 (2019) (model:P3450)
 
 This approach is desired because the jetson is so low power and the M73 i5 is not. The robot has a huge battery, so this is not the biggest deal. The M73 has outdated embedded intel graphics, so the Jetsons Maxwell GPU should do much better with the camera stream.
 
