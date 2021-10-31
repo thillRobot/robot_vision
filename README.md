@@ -73,6 +73,31 @@ The robot runs on ROS Noetic. Install ROS Noetic using the official instruction 
 [Download](https://www.stereolabs.com/developers/release/) and Install the software development kit from stereo labs following the getting started [guide](https://www.stereolabs.com/docs/getting-started/) . I think we have the ZED 1, but the SDK should work for all the cameras (check on this, dont beleive me). 
 This installation will not work in the wrong OS so make sure to download the correct installer. For now we are using ZED SDK for Jetpack 4.6.
 
+#### Step 5 - Integrate ZED with ROS
+There is a section about ROS integration in the ZED docs [here](https://www.stereolabs.com/docs/ros/). Clone and compile the required [ZED packages](https://github.com/stereolabs) in a catkin workspace. I got a little confused about which packages are required, but I think I have it figured out. I should probably read the docs again. Here is what I have tried
+
+I tried to compile the workspace with just `zed-ros-wrapper` and the following error was shown. It did not compile.
+
+```
+cd catkin_ws/src
+git clone https://github.com/stereolabs/zed-ros-wrapper.git
+cd ..
+catkin_make
+```
+
+```
+Could not find the required component `zed_interfaces`. The following ...
+```
+After some digging around this led me to try with `zed-ros-wrapper` and `zed-ros-interfaces` in src and it compiled without errors.
+
+```
+cd catkin_ws/src
+git clone https://github.com/stereolabs/zed-ros-interfaces.git
+git clone https://github.com/stereolabs/zed-ros-wrapper.git
+cd ..
+catkin_make
+```
+Obviously, you do not need to clone the `zed-ros-wrapper` repo twice...
 
 ## old stuff below here 
 
