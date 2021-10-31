@@ -52,13 +52,19 @@ This approach is desired because the jetson is so low power and the M73 i5 is no
 
 If this works, it should port over to the TX2 NX if the nano has resource issues. It is below the reccomended specs from stereo labs, but we are going to try anyway. I have a feeling that it will work because I do not even want to display the video there or perform complex analyis...time to test
 
+There are several approaches to this problem. It seems like most (or alot) of people are using docker. I need to try this, but for now let's do it the ME way. Not in docker lol.
+
 Here is what I have done. 
 
-#### Step 1 - Setup Jetson Nano
+#### Step 1 - Boot Jetson Nano in Jetpack 4.6 (Ubuntu 18.04)
 Follow the getting started turtorial from Nvidia [here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit).
-This involves downloading the operating system image from [here](https://developer.nvidia.com/jetson-nano-sd-card-image) and flashing it with the program of your choice. I have used pi-imager and balena-etcher, but I want to try `dd`. I tried once, but it did not work and now I now why. It is time to try again with `dd` 
+This involves downloading the Jetpack 4.6 (Ubuntu 18.04ish) operating system image from [here](https://developer.nvidia.com/jetson-nano-sd-card-image) and flashing it with the program of your choice. I have used pi-imager and balena-etcher, but I want to try `dd`. I tried once, but it did not work and now I now why. It is time to try again with `dd` 
 
+#### Step 2 - Upgrade Jetson Nano to Ubuntu 20.04 (jetpack version remains 4.6)
+We need to updgrade tp 20.04 because the robot is runnning ROS Noetic. I do not want to downgrade the robot. Do not downgrade the robot!
+NVIDIA has not provided an image for 20.04 and will not provide support (see (here)[https://forums.developer.nvidia.com/t/ubuntu-20-04-on-nano/125451]). Hopefully this will change. There are several images available like the one in that thread above, however these might not be stable and there is no telling what is in there.  (this is also true about the NVIDIA image of course but...)
 
+I followed this [guide](https://qengineering.eu/install-ubuntu-20.04-on-jetson-nano.html) from QEngineering to use `do-release-upgrade` to upgrade 18.04 to 20.04. Apparantly the Jetpack version is still 4.6, so I do not know what that means. There are some signs on the internet that say this upgrade is a bad idea. For now this is just for testing, lets proceed with caution. Note that Chromium browser and some other packges may need to be removed and not re-installed. There is an alternative [guide](https://stackdata.com/upgrade-nvidia-jetson-nano-from-ubuntu-bionic-beaver-to-focal-fossa/) on stackdata that is similar. In this guide openCV is removed also, but I wanted to avoid this if possible.   
 
 
 
