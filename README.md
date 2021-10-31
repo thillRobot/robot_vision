@@ -31,6 +31,19 @@ There are serveral ways to approach this. To begin, I want to test the rtabmap a
 	
 ### Camera Selection
 
+- Kinect V1 
+- ZED Stereo
+- Webcams
+- I should buy a gigevision camera
+
+### Enabling the Kinect V1
+
+Kinect V1 + Jetson Nano jetpack 4.6 upgraded to 20.04 = currently not working in 20.04 (dont give up!)
+
+Kinect V1 + i5 thinkpad ubuntu 20.04  = currently working in 20.04 (it works super cool!)
+
+Follow this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) and it works great. 
+
 
 
 
