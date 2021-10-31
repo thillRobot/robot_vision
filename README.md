@@ -79,25 +79,18 @@ There is a section about ROS integration in the ZED docs [here](https://www.ster
 I tried to compile the workspace with just `zed-ros-wrapper` and the following error was shown. It did not compile.
 
 ```
-cd catkin_ws/src
-git clone https://github.com/stereolabs/zed-ros-wrapper.git
-cd ..
-catkin_make
-```
-
-```
 Could not find the required component `zed_interfaces`. The following ...
 ```
-After some digging around this led me to try with `zed-ros-wrapper` and `zed-ros-interfaces` in src and it compiled without errors.
+After some digging around this led me to try with `zed-ros-wrapper` and `zed-ros-interfaces` in src and it compiled without errors. It makes sense to include the `zed-ros-examples` package also. Cloning the examples package took a long time, but the wifi at my desk is terrible. Too bad my old DS100 died....that makes me think... its time to get that new router switch....
 
 ```
 cd catkin_ws/src
 git clone https://github.com/stereolabs/zed-ros-interfaces.git
 git clone https://github.com/stereolabs/zed-ros-wrapper.git
+git clone https://github.com/stereolabs/zed-ros-examples.git
 cd ..
 catkin_make
 ```
-Obviously, you do not need to clone the `zed-ros-wrapper` repo twice...
 
 ## old stuff below here 
 
