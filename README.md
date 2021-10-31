@@ -92,7 +92,16 @@ cd ..
 catkin_make
 ```
 
+#### Test the ZED camera in ROS !
 
+Plug in the camera and run the zed_wrapper launch file shown in the ZED docs. The launch file is specfic to the camera model.
+
+```
+roslaunch zed_wrapper zed.launch
+```
+Turn on RVIZ to see the data. The Jetson nano did not crash, but it did slow down during this process significantly. Add a pointcloud2 through the displays menu and select the topic `zed/zed_node/point_cloud/cloud_registered`, and the pointcloud with color should appear. Changing the view or zooming is very slow on this system (almost unusable). There is a message about reducing the framerate to reduce requirements. I am thinking about using a bigger Jetson!
+
+<img src="images/zed_ros_wrapper_rviz.png" alt="drawing" width="400"/>
 
 
 
