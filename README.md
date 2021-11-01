@@ -176,7 +176,9 @@ Add a pointcloud2 object and change the topic to `/camera/depth_registered/point
 
 You should see the pointcloud displayed in the RVIZ window. Woo Hoo! 
 
+<img src="images/kinect_freenect_stack_rviz.png" alt="drawing" width="800"/>
 
+Cool, it works! Great job team
 
 
 
