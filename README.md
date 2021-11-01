@@ -44,25 +44,46 @@ Kinect V1 + i5 thinkpad ubuntu 20.04  = currently working in 20.04 (it works sup
 
 #### Step 1 - Setup Ubuntu 20.04 Desktop
 
-First I tried on my older T410 Thinkpad. It was not a fresh install, but I had not done much with this machine. Update the Ubuntu 20.04 Desktop system before compiling the freenect library.
-
-```
-sudo apt update
-sudo apt upgrade
-lsb_release -a
-```
+First I tried on my older T410 Thinkpad. It was not a fresh install, but I had not done much with this machine.  
 
 #### Step 2 - 
 
 I followed this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) for compiling freenect and neccesary ROS package. I have copied the commands from the guide above here for my convience. 
 
+Update the packges
+```
+sudo apt update
+sudo apt upgrade
+```
+
 Install Dependencies
 ```
 sudo apt-get install git-core cmake freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libusb-1.0-0-dev
 ```
+Download the libfreenect source code from gitgub. I cloned the files directly to home, but I think you can do this elsewhere/.
+```
+git clone git://github.com/OpenKinect/libfreenect.git
+```
+Add device rules for the camera. Use vim to open a new file `51-kinect.rules.
+```
+sudo vim /etc/udev/rules.d/51-kinect.rules
+```
+Copy the following into the new file and save.
 
-
-
+```
+# ATTR{product}=="Xbox NUI Motor"
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02b0", MODE="0666"
+# ATTR{product}=="Xbox NUI Audio"
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ad", MODE="0666"
+# ATTR{product}=="Xbox NUI Camera"
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ae", MODE="0666"
+# ATTR{product}=="Xbox NUI Motor"
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02c2", MODE="0666"
+# ATTR{product}=="Xbox NUI Motor"
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02be", MODE="0666"
+# ATTR{product}=="Xbox NUI Motor"
+SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02bf", MODE="0666"
+```
 
 
 ### Enabling the ZED stereo camera 
