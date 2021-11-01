@@ -102,7 +102,7 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02be", MODE="0666"
 SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02bf", MODE="0666"
 ```
 
-Run` the `src/fwfetcher.py` script in `libfreenect` to configure a specific camera.
+Run` the `src/fwfetcher.py` script in `libfreenect` to configure a specific camera. Plug in and power the camera before running the command below.
 
 ```
 cd libfreenect
@@ -125,6 +125,50 @@ freenect-micview
 freenect-glview
 ````
 You should see the depth image shown in a new window.
+
+#### Step 3 - Integrating with ROS 
+
+If it is not installed already, install ROS Noetic using the official instruction [here](http://wiki.ros.org/noetic/Installation/Ubuntu).
+Create and setup a catkin workspace and source the proper files or use a pre-existing catkin workspace.
+
+```
+mkdir -p ~/catkin_ws/src
+```
+Download and compile the packge `freenect_stack` in the workspace.
+
+```
+cd ~/catkin_ws/src
+git clone https://github.com/ros-drivers/freenect_stack.git
+cd ..
+catkin_make
+```
+
+Source the setup file for the workspace
+```
+source devel/setup.bash
+```
+Add the source command to `~/.bashrc` to use the workspace each time a terminal is opened. 
+```
+echo "source ~/catkin_ws/devel/setup.bash" > ~/.bashrc
+```
+
+Now, test the kinect.
+```
+roslaunch freenect_launch freenect.launch depth_registration:=true
+```
+
+Start RVIZ to see the data.
+```
+rviz
+```
+
+Change the fixed from to `camera_link`.
+Add a pointcloud2 object and change the topic to `/camera/depth_registered/points`
+
+You should see the pointcloud displayed in the RVIZ window. Woo Hoo! 
+
+
+
 
 
 
