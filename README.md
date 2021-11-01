@@ -38,15 +38,15 @@ There are serveral ways to approach this. To begin, I want to test the rtabmap a
 
 ### Enabling the Kinect V1
 
-I followed this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) for compiling freenect and neccesary ROS package. I have copied the commands from the guide above here for my convience. 
-
 Kinect V1 + Jetson Nano jetpack 4.6 upgraded to 20.04 = currently not working in 20.04 (dont give up!)
 
 Kinect V1 + i5 thinkpad ubuntu 20.04  = currently working in 20.04 (it works super cool!)
 
+I followed this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) for compiling freenect and neccesary ROS package. I have copied the commands I used from the guide above here for my convience. There minor differences, but it follows the guide closely. 
+
 #### Step 1 - Setup Ubuntu 20.04 Desktop
 
-First I tried on my older T410 Thinkpad. It was not a fresh install, but I had not done much with this machine.  
+First I tried on my older T410 Thinkpad. It was not a fresh install, but I had not done much with this machine. This is just a temporary test platform which is good because it seems like the keyboard is failing. Working through this may have been the last hurah for the t410... wait ... it does not need a keyboard to be a server...  
 
 #### Step 2 - Compile `libfreenect`
 
