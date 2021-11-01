@@ -42,7 +42,28 @@ Kinect V1 + Jetson Nano jetpack 4.6 upgraded to 20.04 = currently not working in
 
 Kinect V1 + i5 thinkpad ubuntu 20.04  = currently working in 20.04 (it works super cool!)
 
-Follow this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) and it works great. 
+#### Step 1 - Setup Ubuntu 20.04 Desktop
+
+First I tried on my older T410 Thinkpad. It was not a fresh install, but I had not done much with this machine. Update the Ubuntu 20.04 Desktop system before compiling the freenect library.
+
+```
+sudo apt update
+sudo apt upgrade
+lsb_release -a
+```
+
+#### Step 2 - 
+
+I followed this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-vision-kinect-v1-with-ros-noetic/) for compiling freenect and neccesary ROS package. I have copied the commands from the guide above here for my convience. 
+
+Install Dependencies
+```
+sudo apt-get install git-core cmake freeglut3-dev pkg-config build-essential libxmu-dev libxi-dev libusb-1.0-0-dev
+```
+
+
+
+
 
 ### Enabling the ZED stereo camera 
 
