@@ -63,8 +63,8 @@ sudo apt-get install git-core cmake freeglut3-dev pkg-config build-essential lib
 ```
 Download the libfreenect source code from gitgub. I cloned the files a new directory at home and compiled there. Note, this is not in a catkin workspace. 
 ```
-mkdir ~/libs
-cd ~/libs
+mkdir ~/lib
+cd ~/lib
 git clone git://github.com/OpenKinect/libfreenect.git
 ```
 Make and install
