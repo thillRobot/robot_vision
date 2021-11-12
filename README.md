@@ -48,10 +48,42 @@ I followed this [guide](https://aibegins.net/2020/11/22/give-your-next-robot-3d-
 
 First I tried on my older T410 Thinkpad. It was not a fresh install, but I had not done much with this machine. This is just a temporary test platform which is good because it seems like the keyboard is failing. Working through this may have been the last hurah for the t410... wait ... it does not need a keyboard to be a server...  
 
+##### Setup virtual environment with `python-venv`
+
+Create a virtual environment for Python 3.8
+
+```
+mkdir ~/.venv
+cd ~/.venv
+python3 -m venv catkin-py38
+```
+
+Activate the environment
+
+```
+source ~/.venv/catkin-py38/bin/activate
+```
+
+Check Python Version
+```
+python --version
+	
+	Python 3.8.10
+```
+
+Update pip
+
+```
+pip install --upgrade pip
+
+         Successfully uninstalled pip-20.0.2
+	Successfully installed pip-21.3.1
+```
+
 #### Step 2 - Compile `libfreenect`
 
 
-Update the packges
+Update the system packges
 ```
 sudo apt update
 sudo apt upgrade
@@ -90,7 +122,7 @@ sudo vim /etc/udev/rules.d/51-kinect.rules
 
 Copy the following into the new file and save.
 ```
-# ATTR{product}=="Xbox NUI Motor"
+ ATTR{product}=="Xbox NUI Motor"
 SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02b0", MODE="0666"
 # ATTR{product}=="Xbox NUI Audio"
 SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ad", MODE="0666"
