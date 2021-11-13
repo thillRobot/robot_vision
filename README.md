@@ -130,6 +130,10 @@ Test the depth camera should see the depth image shown in a new window.
 freenect-glview
 ````
 
+This has been tested on two separate machines. The image below is a screen shot from the m73i5 that will be the vision computer for the lx_robot.
+
+<img src="images/depthmap_dog01.png" alt="drawing" width="800"/>
+
 
 #### Step 3 - Integrating with ROS 
 
@@ -183,9 +187,6 @@ You should see the pointcloud displayed in the RVIZ window. Woo Hoo!
 Cool, it works! Great job team. 
 
 
-Now this has been tested on two separate machines. The image below is a screen shot from the m73i5 that will be the vision computer for the lx_robot.
-
-<img src="images/depthmap_dog01.png" alt="drawing" width="800"/>
 
 
 
