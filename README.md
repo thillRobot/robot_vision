@@ -132,7 +132,7 @@ freenect-glview
 
 This has been tested on two separate machines. The image below is a screen shot from the m73i5 that will be the vision computer for the lx_robot.
 
-<img src="images/depthmap_dog01.png" alt="drawing" width="800"/>
+<img src="images/depthmap_dog01.png" alt="drawing" width="1000"/>
 
 
 #### Step 3 - Integrating with ROS 
