@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /PointCloud21
+        - /PointCloud22
         - /Axes1
         - /TF1
       Splitter Ratio: 0.39642858505249023
@@ -84,6 +85,34 @@ Visualization Manager:
       Use rainbow: true
       Value: true
     - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /kinect2/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
       Class: rviz/Axes
       Enabled: true
       Length: 0.25
@@ -108,7 +137,15 @@ Visualization Manager:
           Value: true
         kinect1_rgb_optical_frame:
           Value: true
+        kinect2_depth_frame:
+          Value: true
+        kinect2_depth_optical_frame:
+          Value: true
         kinect2_link:
+          Value: true
+        kinect2_rgb_frame:
+          Value: true
+        kinect2_rgb_optical_frame:
           Value: true
         world:
           Value: true
@@ -129,7 +166,12 @@ Visualization Manager:
                 kinect1_rgb_optical_frame:
                   {}
             kinect2_link:
-              {}
+              kinect2_depth_frame:
+                kinect2_depth_optical_frame:
+                  {}
+              kinect2_rgb_frame:
+                kinect2_rgb_optical_frame:
+                  {}
       Update Interval: 0
       Value: true
   Enabled: true
@@ -160,7 +202,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 10.945096969604492
+      Distance: 13.144912719726562
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -176,9 +218,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2753975987434387
+      Pitch: 0.2703976035118103
       Target Frame: <Fixed Frame>
-      Yaw: 2.8553965091705322
+      Yaw: 2.900397300720215
     Saved: ~
 Window Geometry:
   Displays:

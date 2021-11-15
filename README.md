@@ -215,6 +215,39 @@ The following frame assigments are made in `lx_vision/src/vision_tf_broadcaster`
 - `base_link` <- `kinect2_link`
 
 
+#### Adding multiple kinects
+
+Multiple kinect cameras running simultaneously at different angles should give the robot a very wide view of the world. 
+
+I have added a second launch with a separate camera name in `freenect_kinect_multiple.launch`
+```
+    <include file="$(find freenect_launch)/launch/freenect.launch" > 
+      <arg name="depth_registration" value="true"/>
+      <arg name="camera" value="kinect1" />  
+    </include>
+
+    <include file="$(find freenect_launch)/launch/freenect.launch" > 
+      <arg name="depth_registration" value="true"/>
+      <arg name="camera" value="kinect2" />  
+    </include>
+```
+
+This appears to be almost working, but the pointcloud data is not getting to rviz from both cameras. Only one seems to be working at a time. The output from the terminal is promising. 
+
+```
+...
+
+[ INFO] [1636952788.205023099]: 2. device on bus 000:00 is a Xbox NUI Camera (2ae) from Microsoft (45e) with serial id 'A00365D09117137A'
+[ INFO] [1636952788.205790219]: Searching for device with index = 1
+[ INFO] [1636952788.207585948]: No matching device found.... waiting for devices. Reason: [ERROR] Unable to open specified kinect
+[ INFO] [1636952791.209691249]: Number devices connected: 2
+[ INFO] [1636952791.209854669]: 1. device on bus 000:00 is a Xbox NUI Camera (2ae) from Microsoft (45e) with serial id 'A00365916429110A'
+[ INFO] [1636952791.210005896]: 2. device on bus 000:00 is a Xbox NUI Camera (2ae) from Microsoft (45e) with serial id 'A00365D09117137A'
+[ INFO] [1636952791.211194039]: Searching for device with index = 1
+[ INFO] [1636952791.213083606]: No matching device found.... waiting for devices. Reason: [ERROR] Unable to open specified kinect
+...
+```
+
 
 
 

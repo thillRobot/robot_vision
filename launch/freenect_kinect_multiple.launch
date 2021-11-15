@@ -8,6 +8,11 @@
       <arg name="camera" value="kinect1" />  
     </include>
 
+    <include file="$(find freenect_launch)/launch/freenect.launch" > 
+      <arg name="depth_registration" value="true"/>
+      <arg name="camera" value="kinect2" />  
+    </include>
+
       <!-- SETUP THE FRAMES -->
     <node
         pkg="lx_vision"
