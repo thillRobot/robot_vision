@@ -1,0 +1,24 @@
+<launch>
+
+    <!-- <env name="ROS_MASTER_URI" value="http://xxx.xxx.xxxx.xxx:11311" /> -->
+    <!-- <env name="ROS_HOSTNAME" value="localhost" /> -->
+
+    <include file="$(find freenect_launch)/launch/freenect.launch" > 
+      <arg name="depth_registration" value="true"/>
+      <arg name="camera" value="kinect1" />
+    </include>
+
+      <!-- SETUP THE FRAMES -->
+    <node
+        pkg="lx_vision"
+        name="vision_tf_broadcaster"
+        type="vision_tf_broadcaster" >
+    </node>
+
+    <node name="rviz" 
+        pkg="rviz" 
+        type="rviz" 
+        args="-d $(find lx_vision)/rviz/freenect_kinect.rviz">
+    </node>
+
+</launch>

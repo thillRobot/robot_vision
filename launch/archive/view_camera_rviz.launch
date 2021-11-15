@@ -6,7 +6,7 @@
     <node name="rviz" 
         pkg="rviz" 
         type="rviz" 
-        args="-d $(find ttu_camera)/ttu_camera.rviz">
+        args="-d $(find ttu_camera)/ttu_camera.rviz"
     </node>
 
 </launch>
