@@ -141,14 +141,14 @@ If it is not installed already, install ROS Noetic using the official instructio
 Create and setup a catkin workspace and source the proper files or use a pre-existing catkin workspace.
 
 ```
-mkdir -p ~/catkin_ws/src
+mkdir -p ~/catkin_make_ws/src
 ```
 We are using this with the robot, so it makes sense to be the same workpace as the related robot packages.
 
 ```
-cd catkin_ws/src
+cd catkin_make_ws/src
 ls
-CmakeLists.txt freenect_stack lx_control lx_vision lx_navigation
+	CmakeLists.txt freenect_stack lx_control lx_vision lx_navigation
 ```
 Download and compile the packge `freenect_stack` in the workspace.
 
@@ -160,21 +160,31 @@ catkin_make
 
 Source the setup file for the workspace
 ```
-source ~/catkin_ws/devel/setup.bash
+source ~/catkin_make_ws/devel/setup.bash
 ```
-Add the source command to `~/.bashrc` to use the workspace each time a terminal is opened. 
+Add the source line to `~/.bashrc` to use the workspace each time a terminal is opened. 
 ```
-echo "source ~/catkin_ws/devel/setup.bash" > ~/.bashrc
+echo "source ~/catkin_make_ws/devel/setup.bash" > ~/.bashrc
 ```
 
 Now, test the kinect.
 ```
 roslaunch freenect_launch freenect.launch depth_registration:=true
+
+
+	Resource not found: rgbd_launch
+
+```
+
+ There is a missing ROS package. Install it with `apt` and repeat the test.
+
+```
+sudo apt install ros-noetic-rgbd-launch
 ```
 
 Start RVIZ to see the data.
 ```
-rviz
+rviz 
 ```
 
 Change the fixed from to `camera_link`.
@@ -186,6 +196,23 @@ You should see the pointcloud displayed in the RVIZ window. Woo Hoo!
 
 Cool, it works! Great job team. 
 
+Use the launch file `freenect_kinect.launch` to turn on the demo with a single command.
+
+
+```
+roslaunch lx_vision freenect_kinect.launch
+```
+
+##### vision_tf_broadcaster
+
+The launch file `freenect_kinect.launch` runs a custom node `lx_vision/src/vision_tf_broadcaster.cpp` to setup the frames for the multiple kinects (`kinect1`, `kinect2`, ...). This is also done in `lx_navigation/src/tf_broadcaster.cpp`. Make sure they do not conflict or repeat frame assignments. 
+
+The camera name (default:`camera`) is set to `kinect1`, `kinect2`, in the args in the launch file. 
+
+The following frame assigments are made in `lx_vision/src/vision_tf_broadcaster` with `tf::TransformBroadcaster`.
+- `world` <- `base_link`
+- `base_link` <- `kinect1_link`
+- `base_link` <- `kinect2_link`
 
 
 
@@ -231,7 +258,7 @@ Could not find the required component `zed_interfaces`. The following ...
 After reading the docs I tried again with `zed-ros-wrapper` and `zed-ros-interfaces` in src and it compiled without errors. It makes sense to include the `zed-ros-examples` package also. 
 
 ```
-cd catkin_ws/src
+cd catkin_make_ws/src
 git clone https://github.com/stereolabs/zed-ros-interfaces.git
 git clone https://github.com/stereolabs/zed-ros-wrapper.git
 git clone https://github.com/stereolabs/zed-ros-examples.git
