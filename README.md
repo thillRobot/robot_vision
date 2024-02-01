@@ -1,5 +1,5 @@
-# lx_vision
-  This is a ROS package for camera and computer vison for the Pioneer LX Robot at Tennessee Technological University 
+# robot_vision
+A collection of computer vison and camera utilities for robots
 
 ## Updating to Ubuntu 20.04 and ROS Noetic 
 
