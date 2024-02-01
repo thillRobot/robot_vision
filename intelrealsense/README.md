@@ -9,7 +9,7 @@
 
 ## Docker + docker compose
 
-The Dockerfile is based on the `distribution_linux` installation instructions [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md)
+The Dockerfile is built from `ubuntu:focal` and follows the `distribution_linux` installation instructions [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md)
 
 Set the home directory for the container to this directory 
 ```
