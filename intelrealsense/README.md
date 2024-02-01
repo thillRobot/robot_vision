@@ -36,6 +36,9 @@ close when you done, if you want to ;)
 docker compose down
 ```
 
+<img src="png_images/ds455-piano-01.png" alt="drawing" width="800"/>
+<img src="png_images/ds455-dog-01.png" alt="drawing" width="800"/>
+
 
 
 
