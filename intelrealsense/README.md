@@ -12,12 +12,11 @@
 The Dockerfile is based on the `distribution_linux` installation instructions [here](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md)
 
 Set the home directory for the container to this directory 
+```
+export RS_WS_PATH=$PWD
+```
 
-```
-export $RS_WS_PATH
-```
 allow access to graphics
-
 ```
 xhost local:root
 ```
@@ -28,7 +27,6 @@ docker compose up --build --remove-orphans
 ```
 
 run a service from the `docker-compose.yaml` file
-
 ```
 docker compose run realsense
 ```
