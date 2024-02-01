@@ -5,8 +5,7 @@ ENV NVIDIA_VISIBLE_DEVICES \
 ENV NVIDIA_DRIVER_CAPABILITIES \
     ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
 
-RUN apt update && apt dist-upgrade -y && apt update && apt install -y apt-utils build-essential vim git wget curl
-RUN apt install -y apt-transport-https lsb-release
+RUN apt update && apt dist-upgrade -y && apt update && apt install -y apt-utils build-essential vim git wget curl apt-transport-https lsb-release
 
 RUN mkdir -p /etc/apt/keyrings 
 RUN curl -sSf https://librealsense.intel.com/Debian/librealsense.pgp | tee /etc/apt/keyrings/librealsense.pgp > /dev/null
