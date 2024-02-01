@@ -1,5 +1,5 @@
 services:
-  realsense:
+  realsense-viewer:
     command: realsense-viewer
     build: .
     runtime: nvidia

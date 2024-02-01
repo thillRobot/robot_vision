@@ -28,7 +28,7 @@ docker compose up --build --remove-orphans
 
 run a service from the `docker-compose.yaml` file
 ```
-docker compose run realsense
+docker compose run realsense-viewer
 ```
 
 
