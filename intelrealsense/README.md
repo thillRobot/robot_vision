@@ -21,16 +21,20 @@ allow access to graphics
 xhost local:root
 ```
 
-start and build the project 
+bring up the project and build the image, this will also start the realsense-viewer 
 ```
 docker compose up --build --remove-orphans
 ```
 
-run a service from the `docker-compose.yaml` file
+after the image is built it can be run as a service from the `docker-compose.yaml` file
 ```
 docker compose run realsense-viewer
 ```
 
+close when you done, if you want to ;)
+```
+docker compose down
+```
 
 
 
