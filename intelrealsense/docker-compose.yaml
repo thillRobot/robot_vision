@@ -1,21 +1,21 @@
 services:
-  realsense-viewer:
-    command: realsense-viewer
-    build: .
-    runtime: nvidia
-    environment:
-      DISPLAY: $DISPLAY
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS_PATH/src:/home/realsense_ws/src
-    devices:
-      - /dev/video0:/dev/video0
-      - /dev/video1:/dev/video1
-      - /dev/video2:/dev/video2
-      - /dev/video3:/dev/video3
-      - /dev/video4:/dev/video4
-      - /dev/video5:/dev/video5
+#  realsense-viewer:
+#    command: realsense-viewer
+#    build: .
+#    runtime: nvidia
+#    environment:
+#      DISPLAY: $DISPLAY
+#    volumes:
+#      - /tmp/.X11-unix:/tmp/.X11-unix
+#      - ~/.Xauthority:/root/.Xauthority
+#      - $RS_WS_PATH/src:/home/realsense_ws/src
+#    devices:
+#      - /dev/video0:/dev/video0
+#      - /dev/video1:/dev/video1
+#      - /dev/video2:/dev/video2
+#      - /dev/video3:/dev/video3
+#      - /dev/video4:/dev/video4
+#      - /dev/video5:/dev/video5
   realsense-source:
     command: /bin/bash
     build:
@@ -28,13 +28,34 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/root/.Xauthority
       - $RS_WS_PATH/src:/home/realsense_ws/src
-  #  devices:  
-  #    - /dev/video0:/dev/video0
-  #    - /dev/video1:/dev/video1
-  #    - /dev/video2:/dev/video2
-  #    - /dev/video3:/dev/video3
-  #    - /dev/video4:/dev/video4
-  #    - /dev/video5:/dev/video5
+    #devices:  
+    #  - /dev/video0:/dev/video0
+    #  - /dev/video1:/dev/video1
+    #  - /dev/video2:/dev/video2
+    #  - /dev/video3:/dev/video3
+    #  - /dev/video4:/dev/video4
+    #  - /dev/video5:/dev/video5
+  realsense-patched:
+    command: /bin/bash
+    image: realsense/patched
+    #build:
+    #  context: .
+    #  dockerfile: source.Dockerfile
+    runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+      - $RS_WS_PATH/src:/home/realsense_ws/src
+    devices:  
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+      - /dev/video2:/dev/video2
+      - /dev/video3:/dev/video3
+      - /dev/video4:/dev/video4
+      - /dev/video5:/dev/video5
+
 
 
 
