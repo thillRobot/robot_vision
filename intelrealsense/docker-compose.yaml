@@ -16,11 +16,11 @@ services:
 #      - /dev/video3:/dev/video3
 #      - /dev/video4:/dev/video4
 #      - /dev/video5:/dev/video5
-  realsense-source:
+  realsense-build:
     command: /bin/bash
     build:
       context: .
-      dockerfile: source.Dockerfile
+      dockerfile: focal.Dockerfile
     runtime: nvidia
     environment:
       DISPLAY: $DISPLAY
@@ -28,19 +28,10 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/root/.Xauthority
       - $RS_WS_PATH/src:/home/realsense_ws/src
-    #devices:  
-    #  - /dev/video0:/dev/video0
-    #  - /dev/video1:/dev/video1
-    #  - /dev/video2:/dev/video2
-    #  - /dev/video3:/dev/video3
-    #  - /dev/video4:/dev/video4
-    #  - /dev/video5:/dev/video5
-  realsense-patched:
+
+  realsense:
     command: /bin/bash
-    image: realsense/patched
-    #build:
-    #  context: .
-    #  dockerfile: source.Dockerfile
+    image: intelrealsense-realsense-build:focal-515
     runtime: nvidia
     environment:
       DISPLAY: $DISPLAY
@@ -55,6 +46,26 @@ services:
       - /dev/video3:/dev/video3
       - /dev/video4:/dev/video4
       - /dev/video5:/dev/video5
+
+
+#  realsense-patched:
+#  realsense-patched:
+#    command: /bin/bash
+#    image: realsense/patched
+#    runtime: nvidia
+#    environment:
+#      DISPLAY: $DISPLAY
+#    volumes:
+#      - /tmp/.X11-unix:/tmp/.X11-unix
+#      - ~/.Xauthority:/root/.Xauthority
+#      - $RS_WS_PATH/src:/home/realsense_ws/src
+#    devices:  
+#      - /dev/video0:/dev/video0
+#      - /dev/video1:/dev/video1
+#      - /dev/video2:/dev/video2
+#      - /dev/video3:/dev/video3
+#      - /dev/video4:/dev/video4
+#      - /dev/video5:/dev/video5
 
 
 
