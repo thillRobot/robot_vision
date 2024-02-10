@@ -34,16 +34,20 @@ RUN cd $RS_WS/librealsense && mkdir build && cd build && cmake ../ -DBUILD_EXAMP
 
 SHELL ["/bin/bash", "-c"] 
 # install ROS Noetic from repository
-RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y ros-noetic-desktop-full python3-rosdep
-RUN source /opt/ros/noetic/setup.bash
-RUN rosdep init && rosdep update
+COPY ./shared/install-noetic.bash /
+RUN ./install-noetic.bash
+
+
+#RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+#RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+#RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y ros-noetic-desktop-full python3-rosdep
+#RUN source /opt/ros/noetic/setup.bash
+#RUN rosdep init && rosdep update
 
 # setup and build catkin workspace
-ENV ROS_WS=/home/catkin_ws
-ENV ROS=/opt/ros/noetic
-RUN source $ROS/setup.bash && mkdir -p $ROS_WS/src 
+#ENV ROS_WS=/home/catkin_ws
+#ENV ROS=/opt/ros/noetic
+#RUN source $ROS/setup.bash && mkdir -p $ROS_WS/src 
 # && cd $ROS_WS && catkin_make # completed below by intel, thanks alot guys...
 
 RUN apt update && apt install -y ros-noetic-ddynamic-reconfigure
