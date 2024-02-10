@@ -1,4 +1,61 @@
 services:
+  realsense-build:
+    command: /bin/bash
+    build:
+      context: .
+      dockerfile: focal.Dockerfile
+ #    runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+      - $RS_WS/shared:/home/realsense_ws/shared  
+      - $RS_WS/src:/home/realsense_ws/src
+      - $ROS_WS/src:/home/catkin_ws/src
+  realsense:
+    command: /bin/bash
+    build:
+      context: .
+      dockerfile: focal.Dockerfile 
+ #   image: intelrealsense-realsense-build:focal-patch-ros
+ #  runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+      - $RS_WS/shared:/home/realsense_ws/shared
+      - $RS_WS/src:/home/realsense_ws/src
+      - $ROS_WS/src:/home/catkin_ws/src  
+    devices:      
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+      - /dev/video2:/dev/video2
+      - /dev/video3:/dev/video3
+      - /dev/video4:/dev/video4
+      - /dev/video5:/dev/video5
+  realsense-patch:
+    command: /bin/bash
+    image: intelrealsense-realsense-build:focal-patch-ros
+ #  runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+      - $RS_WS/shared:/home/realsense_ws/shared
+      - $RS_WS/src:/home/realsense_ws/src
+      - $ROS_WS/src:/home/catkin_ws/src  
+    devices:      
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+      - /dev/video2:/dev/video2
+      - /dev/video3:/dev/video3
+      - /dev/video4:/dev/video4
+      - /dev/video5:/dev/video5
+
+
 #  realsense-viewer:
 #    command: realsense-viewer
 #    build: .
@@ -16,36 +73,3 @@ services:
 #      - /dev/video3:/dev/video3
 #      - /dev/video4:/dev/video4
 #      - /dev/video5:/dev/video5
-  realsense-build:
-    command: /bin/bash
-    build:
-      context: .
-      dockerfile: focal.Dockerfile
- #    runtime: nvidia
-    environment:
-      DISPLAY: $DISPLAY
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS_PATH/src:/home/realsense_ws/src
-
-  realsense:
-    command: /bin/bash
-    image: intelrealsense-realsense-build:focal-515-ros
- #  runtime: nvidia
-    environment:
-      DISPLAY: $DISPLAY
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS_PATH/src:/home/realsense_ws/src
-      - $RS_WS_PATH/ply_images:/home/realsense_ws/ply_images  
-      - $RS_WS_PATH/bags:/home/realsense_ws/bags  
-    devices:      
-      - /dev/video0:/dev/video0
-      - /dev/video1:/dev/video1
-      - /dev/video2:/dev/video2
-      - /dev/video3:/dev/video3
-      - /dev/video4:/dev/video4
-      - /dev/video5:/dev/video5
-

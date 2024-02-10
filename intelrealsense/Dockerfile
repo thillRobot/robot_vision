@@ -18,6 +18,8 @@ DEBIAN_FRONTEND=noninteractive apt install -y librealsense2-dkms librealsense2-u
 
 ENV RS_WS=/home/realsense_ws
 RUN mkdir -p $RS_WS/src 
+#ENV CATKIN_WS=/home/catkin_ws
+#RUN mkdir -p $CATKIN_WS/src 
 
 COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]

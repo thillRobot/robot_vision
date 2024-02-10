@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(lx_vision)
+project(robot_vision)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
