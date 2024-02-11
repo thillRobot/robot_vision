@@ -34,8 +34,8 @@ services:
       - /dev/video3:/dev/video3
       - /dev/video4:/dev/video4
       - /dev/video5:/dev/video5
-      - /dev/video4:/dev/video6
-      - /dev/video5:/dev/video7
+#      - /dev/video4:/dev/video6
+#      - /dev/video5:/dev/video7
 
 #  realsense-patch:
 #    command: /bin/bash
