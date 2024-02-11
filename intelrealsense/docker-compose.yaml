@@ -1,34 +1,32 @@
 services:
-  realsense-build:
-    command: /bin/bash
-    build:
-      context: .
-      dockerfile: focal.Dockerfile
- #    runtime: nvidia
-    environment:
-      DISPLAY: $DISPLAY
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS/shared:/home/realsense_ws/shared  
-      - $RS_WS/src:/home/realsense_ws/src
-      #- $ROS_WS/src:/home/catkin_ws/src
+#  realsense-build:
+#    command: /bin/bash
+#    build:
+#      context: .
+#      dockerfile: focal.Dockerfile
+# #    runtime: nvidia
+#    environment:
+#      DISPLAY: $DISPLAY
+#    volumes:
+#      - /tmp/.X11-unix:/tmp/.X11-unix
+#      - ~/.Xauthority:/root/.Xauthority
+#      - $RS_WS/shared:/home/realsense_ws/shared  
+#      - $RS_WS/src:/home/realsense_ws/src
+#      #- $ROS_WS/src:/home/catkin_ws/src
 
   realsense:
     command: /bin/bash
     build:
       context: .
-      dockerfile: focal.Dockerfile 
- #   image: intelrealsense-realsense-build:focal-patch-ros
+      dockerfile: focal.Dockerfile
  #  runtime: nvidia
     environment:
       DISPLAY: $DISPLAY
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS/shared:/home/realsense_ws/shared
-      - $RS_WS/src:/home/realsense_ws/src
-      #- $ROS_WS/src:/home/catkin_ws/src  
+      - $RS_WS/shared:/home/shared
+      #- $RS_WS/launch:/home/realsense_ws/launch
     devices:      
       - /dev/video0:/dev/video0
       - /dev/video1:/dev/video1

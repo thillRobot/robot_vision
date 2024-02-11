@@ -46,9 +46,9 @@ COPY ./shared/install-realsense-ros.bash /
 RUN ./install-realsense-ros.bash
 
 #copy seam_detection source to ros workspace
-COPY ./shared/seam_detection $ROS_WS/src/seam_detection
-SHELL ["/bin/bash", "-c"]
-RUN source $ROS/setup.bash && cd $ROS_WS && catkin_make
+#COPY ./launch/ $ROS_WS/src/realsense-ros/realsense2_camera/launch
+#SHELL ["/bin/bash", "-c"]
+#RUN source $ROS/setup.bash && cd $ROS_WS && catkin_make
 
 COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
