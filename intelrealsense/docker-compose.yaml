@@ -26,7 +26,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/root/.Xauthority
       - $RS_WS/shared:/home/shared
-      #- $RS_WS/launch:/home/realsense_ws/launch
+      - $ROL_WS/src:/home/overlay_ws/src
     devices:      
       - /dev/video0:/dev/video0
       - /dev/video1:/dev/video1
