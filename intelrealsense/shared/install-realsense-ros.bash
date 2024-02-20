@@ -16,3 +16,5 @@ cd .. && \
 catkin_make clean && catkin_make -DCATKIN_ENABLE_TESTING=False -DCMAKE_BUILD_TYPE=Release && catkin_make install
 source $ROS_WS/devel/setup.bash
 
+# install realsense2-description for camera models and launch files...check first in case in comes with the build
+

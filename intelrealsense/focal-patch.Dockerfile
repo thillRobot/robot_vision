@@ -6,11 +6,11 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
     ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
 
 RUN apt-get update && apt-get upgrade -y 
-RUN apt-get update && apt-get install -y apt-utils build-essential vim git curl wget 
+RUN apt-get update && apt-get install -y apt-utils build-essential vim git curl 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libssl-dev libusb-1.0-0-dev libudev-dev udev\  
     pkg-config libgtk-3-dev cmake libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at\ 
-    libelf-dev elfutils dwarves bison flex lsb-release apt-transport-https
+    libelf-dev elfutils dwarves bison flex lsb-release apt-transport-https dialog
 
 # get librealsense source
 ENV RS_WS=/home/realsense_ws
@@ -43,7 +43,7 @@ RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-realsense-ubuntu-
 #	RUN ./setup-ros-workspace.bash
 #
 #	# ds455 works as usb3.2 in realsense-viewer up to this point
-#	# install realsense-ros from source 
+#	# install realsense-ros from sourcee
 #	COPY ./shared/install-realsense-ros.bash /
 #	RUN ./install-realsense-ros.bash
 #
