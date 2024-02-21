@@ -7,8 +7,10 @@ apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ros-noetic-d
 source /opt/ros/noetic/setup.bash
 rosdep init && rosdep update
 
-#setup and build catkin workspace
-export ROS_WS=/home/catkin_ws
-export ROS=/opt/ros/noetic
-source $ROS/setup.bash && mkdir -p $ROS_WS/src
-cd $ROS_WS && catkin_make 
+#setup and build catkin workspace, moved to setup-ros-workspace.bash
+#export ROS_WS=/home/catkin_ws
+#export ROS=/opt/ros/noetic
+#source $ROS/setup.bash && mkdir -p $ROS_WS/src
+#cd $ROS_WS && catkin_make 
+
+apt-get update && apt-get install -y python3-catkin-tools

@@ -1,46 +1,32 @@
 services:
-#  realsense-build:
-#    command: /bin/bash
-#    build:
-#      context: .
-#      dockerfile: focal.Dockerfile
-# #    runtime: nvidia
-#    environment:
-#      DISPLAY: $DISPLAY
-#    volumes:
-#      - /tmp/.X11-unix:/tmp/.X11-unix
-#      - ~/.Xauthority:/root/.Xauthority
-#      - $RS_WS/shared:/home/realsense_ws/shared  
-#      - $RS_WS/src:/home/realsense_ws/src
-#      #- $ROS_WS/src:/home/catkin_ws/src
 
-        #  realsense:
-        #    command: /bin/bash
-        #    build:
-        #      context: .
-        #      dockerfile: focal.Dockerfile
-        # #  runtime: nvidia
-        #    environment:
-        #      DISPLAY: $DISPLAY
-        #    volumes:
-        #      - /tmp/.X11-unix:/tmp/.X11-unix
-        #      - ~/.Xauthority:/root/.Xauthority
-        #      - $RS_WS/shared:/home/shared
-        #      - $ROL_WS/src:/home/overlay_ws/src
-        #    devices:      
-        #      - /dev/video0:/dev/video0
-        #      - /dev/video1:/dev/video1
-        #      - /dev/video2:/dev/video2
-        #      - /dev/video3:/dev/video3
-        #      - /dev/video4:/dev/video4
-        #      - /dev/video5:/dev/video5
-        #
-  realsense-patch:
+  realsense:
     command: /bin/bash
-    #build:
-    #  context: .
-    #  dockerfile: focal-patch.Dockerfile    
-    image: intelrealsense-realsense-patch:focal-patch
+    build:
+      context: .
+      dockerfile: focal-from-patch.Dockerfile
+      #runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+      - $RS_WS/shared:/home/shared
+      - $ROL_WS/src:/home/overlay_ws/src
+    devices:      
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+      - /dev/video2:/dev/video2
+      - /dev/video3:/dev/video3
+      - /dev/video4:/dev/video4
+      - /dev/video5:/dev/video5
+               
+  realsense-build:
+    command: /bin/bash
+    build:
+      context: .
+      dockerfile: focal-patch.Dockerfile    
+    #image: intelrealsense-realsense-patch:focal-patch
     #image: intelrealsense-realsense-build:focal-patch-ros
     # runtime: nvidia
     environment:
@@ -50,13 +36,10 @@ services:
       - ~/.Xauthority:/root/.Xauthority
       - $RS_WS/shared:/home/shared
       - $ROL_WS/src:/home/overlay_ws/src  
-        #- $RS_WS/shared:/home/realsense_ws/shared
-        #- $RS_WS/src:/home/realsense_ws/src
-    devices:      
-      - /dev/video0:/dev/video0
-      - /dev/video1:/dev/video1
-      - /dev/video2:/dev/video2
-      - /dev/video3:/dev/video3
-      - /dev/video4:/dev/video4
-      - /dev/video5:/dev/video5
-
+        #    devices:      
+        #      - /dev/video0:/dev/video0
+        #      - /dev/video1:/dev/video1
+        #      - /dev/video2:/dev/video2
+        #      - /dev/video3:/dev/video3
+        #      - /dev/video4:/dev/video4
+        #      - /dev/video5:/dev/video5

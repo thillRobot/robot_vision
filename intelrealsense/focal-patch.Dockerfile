@@ -24,9 +24,9 @@ RUN cd $RS_WS/librealsense && ./scripts/setup_udev_rules.sh
 RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-utils-hwe.sh
 RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-realsense-ubuntu-lts-hwe.sh
 # run this line manually from bash in container instead, or just skip it, who needs the patch anyway
-#RUN DEBIAN_FRONTEND=noninteractive cd $RS_WS/librealsense && ./scripts/patch-realsense-ubuntu-lts-hwe.sh
+#RUN DEBIAN_FRONTEND=dialog cd $RS_WS/librealsense && ./scripts/patch-realsense-ubuntu-lts-hwe.sh
 #SHELL ["/bin/bash", "-c"]
-#	RUN DEBIAN_FRONTEND=dialog cd $RS_WS/librealsense && ./scripts/patch-realsense-ubuntu-lts-hwe.sh<<<$'n\n y\n n\n y\n n\n y\n'
+#RUN DEBIAN_FRONTEND=dialog cd $RS_WS/librealsense && ./scripts/patch-realsense-ubuntu-lts-hwe.sh<<<$'n\n y\n n\n y\n n\n y\n'
 #
 #	# build and install librealsense
 #	COPY ./shared/build-librealsense.bash /
@@ -47,10 +47,9 @@ RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-realsense-ubuntu-
 #	COPY ./shared/install-realsense-ros.bash /
 #	RUN ./install-realsense-ros.bash
 #
-#	#copy seam_detection source to ros workspace
-#	#COPY ./launch/ $ROS_WS/src/realsense-ros/realsense2_camera/launch
-#	#SHELL ["/bin/bash", "-c"]
-#	#RUN source $ROS/setup.bash && cd $ROS_WS && catkin_make
+#	# install teaserpp if needed, uncomment in CMakelists if not
+#	COPY ./shared/install-teaserpp.bash
+#	RUN ./install-teaserpp.bash
 
 COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
