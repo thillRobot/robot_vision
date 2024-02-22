@@ -20,7 +20,12 @@ services:
       - /dev/video3:/dev/video3
       - /dev/video4:/dev/video4
       - /dev/video5:/dev/video5
-               
+    ports:
+      - 11311:11311
+    networks:
+      vlan:
+        ipv4_address: 192.168.253.210      
+
   realsense-build:
     command: /bin/bash
     build:
@@ -43,3 +48,15 @@ services:
         #      - /dev/video3:/dev/video3
         #      - /dev/video4:/dev/video4
         #      - /dev/video5:/dev/video5
+        
+networks:
+  vlan:
+    driver: macvlan
+    driver_opts:
+      parent: eno1
+    ipam:
+      config: 
+        - subnet: "192.168.253.0/24"
+          ip_range: "192.168.253.208/28"
+          gateway: "192.168.253.253"
+
