@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: focal-from-patch.Dockerfile
-      #runtime: nvidia
+    #runtime: nvidia
     environment:
       DISPLAY: $DISPLAY
     volumes:
@@ -24,7 +24,7 @@ services:
       - 11311:11311
     networks:
       vlan:
-        ipv4_address: 192.168.200.210      
+        ipv4_address: 192.168.253.210      
 
   realsense-build:
     command: /bin/bash
@@ -33,7 +33,7 @@ services:
       dockerfile: focal-patch.Dockerfile    
     #image: intelrealsense-realsense-patch:focal-patch
     #image: intelrealsense-realsense-build:focal-patch-ros
-    # runtime: nvidia
+    runtime: nvidia
     environment:
       DISPLAY: $DISPLAY
     volumes:
@@ -53,10 +53,13 @@ networks:
   vlan:
     driver: macvlan
     driver_opts:
-      parent: eno1
+      parent: enp6s0
+      #parent: eno1
     ipam:
       config: 
-        - subnet: "192.168.200.0/24"
-          ip_range: "192.168.200.208/28"
-          gateway: "192.168.200.200"
-
+        - subnet: "192.168.253.0/24"
+          ip_range: "192.168.253.208/28"
+          gateway: "192.168.253.200"
+   #     - subnet: "192.168.200.0/24"
+   #       ip_range: "192.168.200.208/28"
+   #       gateway: "192.168.200.200"

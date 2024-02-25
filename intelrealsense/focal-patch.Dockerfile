@@ -5,7 +5,7 @@ ENV NVIDIA_VISIBLE_DEVICES \
 ENV NVIDIA_DRIVER_CAPABILITIES \
     ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
 
-RUN apt-get update && apt-get upgrade -y 
+RUN apt-get update && apt-get dist-upgrade -y
 RUN apt-get update && apt-get install -y apt-utils build-essential vim git curl 
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libssl-dev libusb-1.0-0-dev libudev-dev udev\  
@@ -20,9 +20,11 @@ RUN cd $RS_WS && git clone https://github.com/IntelRealSense/librealsense
 RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/setup_udev_rules.sh
 RUN cd $RS_WS/librealsense && ./scripts/setup_udev_rules.sh
 
-# apply kernel patch from librealsense 
+# prepare kernel patch scripts by removing sudo
 RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-utils-hwe.sh
 RUN cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-realsense-ubuntu-lts-hwe.sh
+
+# apply kernel patch from librealsense 
 # run this line manually from bash in container instead, or just skip it, who needs the patch anyway
 #RUN DEBIAN_FRONTEND=dialog cd $RS_WS/librealsense && ./scripts/patch-realsense-ubuntu-lts-hwe.sh
 #SHELL ["/bin/bash", "-c"]

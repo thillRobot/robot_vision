@@ -1,4 +1,4 @@
-FROM intelrealsense-realsense-build:focal-patch-ros
+FROM intelrealsense-realsense-build:focal-patch
 
 ENV NVIDIA_VISIBLE_DEVICES \
     ${NVIDIA_VISIBLE_DEVICES:-all}
@@ -16,27 +16,27 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libssl-dev libusb-1.0-0-de
 # note, kernel patch from intel has been applied to image
 
 #	# build and install librealsense
-#	COPY ./shared/build-librealsense.bash /
-#	RUN ./build-librealsense.bash
-#
+COPY ./shared/build-librealsense.bash /
+RUN ./build-librealsense.bash
+
 #	# install ROS Noetic from repository
-#	ENV ROS=/opt/ros/noetic
-#	COPY ./shared/install-ros-noetic.bash /
-#	RUN ./install-ros-noetic.bash
+ENV ROS=/opt/ros/noetic
+COPY ./shared/install-ros-noetic.bash /
+RUN ./install-ros-noetic.bash
 #
 #	# setup ros workspace
-#	ENV ROS_WS=/home/catkin_ws
-#	COPY ./shared/setup-ros-workspace.bash /
-#	RUN ./setup-ros-workspace.bash
+ENV ROS_WS=/home/catkin_ws
+COPY ./shared/setup-ros-workspace.bash /
+RUN ./setup-ros-workspace.bash
 #
 #	# install realsense-ros from sourcee
-#	COPY ./shared/install-realsense-ros.bash /
-#	RUN ./install-realsense-ros.bash
+COPY ./shared/install-realsense-ros.bash /
+RUN ./install-realsense-ros.bash
 #
 #	#RUN apt-get update
 #	# install teaserpp if needed, uncomment in CMakelists if not
-#	COPY ./shared/install-teaserpp.bash /
-#	RUN ./install-teaserpp.bash
+COPY ./shared/install-teaserpp.bash /
+RUN ./install-teaserpp.bash
 
 COPY ./entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
