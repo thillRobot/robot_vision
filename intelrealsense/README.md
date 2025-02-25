@@ -51,15 +51,13 @@ this steps are akwards, this needs to be contained in the dockerfile, for now th
   ```
 
   2) start the container and run bash (bash is command in docker compose)
- ```
+  ```
   docker compose run realsense-source
-  
   ```
    
 in the container run the commands from the realsense instructions for the remaining steps starting at 4
   ```
-  cd $RS_WS/librealsense && sed -i 's/sudo//g' scripts/patch-realsense-ubuntu-lts-hwe.sh
-
+  cd $RS_WS/librealsense && ./scripts/patch-realsense-ubuntu-lts-hwe.sh
   ```
 
 the patch is the problematic step, the interactive inputs need to be handled..

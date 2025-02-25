@@ -1,61 +1,65 @@
 services:
-#  realsense-viewer:
-#    command: realsense-viewer
-#    build: .
-#    runtime: nvidia
-#    environment:
-#      DISPLAY: $DISPLAY
-#    volumes:
-#      - /tmp/.X11-unix:/tmp/.X11-unix
-#      - ~/.Xauthority:/root/.Xauthority
-#      - $RS_WS_PATH/src:/home/realsense_ws/src
-#    devices:
-#      - /dev/video0:/dev/video0
-#      - /dev/video1:/dev/video1
-#      - /dev/video2:/dev/video2
-#      - /dev/video3:/dev/video3
-#      - /dev/video4:/dev/video4
-#      - /dev/video5:/dev/video5
-  realsense-source:
+
+  realsense:
     command: /bin/bash
     build:
       context: .
-      dockerfile: source.Dockerfile
-    runtime: nvidia
+      dockerfile: focal-from-patch.Dockerfile
+    #runtime: nvidia
     environment:
       DISPLAY: $DISPLAY
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS_PATH/src:/home/realsense_ws/src
-    #devices:  
-    #  - /dev/video0:/dev/video0
-    #  - /dev/video1:/dev/video1
-    #  - /dev/video2:/dev/video2
-    #  - /dev/video3:/dev/video3
-    #  - /dev/video4:/dev/video4
-    #  - /dev/video5:/dev/video5
-  realsense-patched:
-    command: /bin/bash
-    image: realsense/patched
-    #build:
-    #  context: .
-    #  dockerfile: source.Dockerfile
-    runtime: nvidia
-    environment:
-      DISPLAY: $DISPLAY
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/.Xauthority:/root/.Xauthority
-      - $RS_WS_PATH/src:/home/realsense_ws/src
-    devices:  
+      - $RS_WS/shared:/home/shared
+      - $ROL_WS/src:/home/overlay_ws/src
+    devices:      
       - /dev/video0:/dev/video0
       - /dev/video1:/dev/video1
       - /dev/video2:/dev/video2
       - /dev/video3:/dev/video3
       - /dev/video4:/dev/video4
       - /dev/video5:/dev/video5
+    ports:
+      - 11311:11311
+    networks:
+      vlan:
+        ipv4_address: 192.168.253.210      
 
-
-
-
+  realsense-build:
+    command: /bin/bash
+    build:
+      context: .
+      dockerfile: focal-patch.Dockerfile    
+    #image: intelrealsense-realsense-patch:focal-patch
+    #image: intelrealsense-realsense-build:focal-patch-ros
+    runtime: nvidia
+    environment:
+      DISPLAY: $DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+      - $RS_WS/shared:/home/shared
+      - $ROL_WS/src:/home/overlay_ws/src  
+        #    devices:      
+        #      - /dev/video0:/dev/video0
+        #      - /dev/video1:/dev/video1
+        #      - /dev/video2:/dev/video2
+        #      - /dev/video3:/dev/video3
+        #      - /dev/video4:/dev/video4
+        #      - /dev/video5:/dev/video5
+        
+networks:
+  vlan:
+    driver: macvlan
+    driver_opts:
+      parent: enp6s0
+      #parent: eno1
+    ipam:
+      config: 
+        - subnet: "192.168.253.0/24"
+          ip_range: "192.168.253.208/28"
+          gateway: "192.168.253.200"
+   #     - subnet: "192.168.200.0/24"
+   #       ip_range: "192.168.200.208/28"
+   #       gateway: "192.168.200.200"

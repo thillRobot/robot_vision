@@ -52,3 +52,13 @@ CATKIN_IGNORE
 
 # libraries or other source repos
 */librealsense/
+
+# large data files 
+
+*.bag
+*.zip
+*.gz
+
+
+# other repos
+*/realsense-ros2-docker/
