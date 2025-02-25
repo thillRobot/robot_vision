@@ -19,7 +19,7 @@ echo "cd $ROL_WS && catkin_make && source $ROL_WS/devel/setup.bash" >> /root/.ba
 #export ROB_WS=/home/catkin_build_ws
 #echo "cd $ROB_WS && catkin build && source $ROB_WS/devel/setup.bash" >> /root/.bashrc
 
-echo "export ROS_IP=192.168.200.210" >> /root/.bashrc
-echo "export ROS_MASTER_URI=http://192.168.200.199:11311" >> /root/.bashrc
+#echo "export ROS_IP=192.168.200.210" >> /root/.bashrc
+#echo "export ROS_MASTER_URI=http://192.168.200.199:11311" >> /root/.bashrc
 
 exec "$@"
