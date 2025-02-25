@@ -59,3 +59,6 @@ CATKIN_IGNORE
 *.zip
 *.gz
 
+
+# other repos
+*/realsense-ros2-docker/
